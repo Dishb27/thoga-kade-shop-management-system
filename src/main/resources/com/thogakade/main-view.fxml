@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.thogakade.controller.MainController">
+    <children>
+        <!-- Header -->
+        <HBox alignment="CENTER" prefHeight="80.0" style="-fx-background-color: #2c3e50;">
+            <children>
+                <Label text="Thoga Kade - Shop Management System" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+            </children>
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            </padding>
+        </HBox>
+
+        <!-- Main Content -->
+        <TabPane prefHeight="620.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <!-- Customer Management Tab -->
+                <Tab text="Customer Management">
+                    <content>
+                        <VBox spacing="10.0">
+                            <children>
+                                <!-- Customer Form -->
+                                <VBox spacing="10.0" style="-fx-background-color: #ecf0f1; -fx-padding: 15;">
+                                    <children>
+                                        <Label text="Customer Information" textFill="#2c3e50">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Label>
+
+                                        <!-- Row 1 -->
+                                        <HBox spacing="15.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Customer ID:" />
+                                                        <TextField fx:id="txtCustomerId" promptText="Enter Customer ID" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Title:" />
+                                                        <ComboBox fx:id="cmbCustomerTitle" promptText="Select Title" HBox.hgrow="ALWAYS" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Name:" />
+                                                        <TextField fx:id="txtCustomerName" promptText="Enter Customer Name" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <!-- Row 2 -->
+                                        <HBox spacing="15.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Date of Birth:" />
+                                                        <DatePicker fx:id="dpCustomerDOB" promptText="Select DOB" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Salary:" />
+                                                        <TextField fx:id="txtCustomerSalary" promptText="Enter Salary" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Address:" />
+                                                        <TextField fx:id="txtCustomerAddress" promptText="Enter Address" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <!-- Row 3 -->
+                                        <HBox spacing="15.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="City:" />
+                                                        <TextField fx:id="txtCustomerCity" promptText="Enter City" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Province:" />
+                                                        <TextField fx:id="txtCustomerProvince" promptText="Enter Province" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Postal Code:" />
+                                                        <TextField fx:id="txtCustomerPostal" promptText="Enter Postal Code" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <!-- Buttons -->
+                                        <HBox alignment="CENTER" spacing="10.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" onAction="#addCustomer" prefWidth="100.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Add" />
+                                                <Button mnemonicParsing="false" onAction="#updateCustomer" prefWidth="100.0" style="-fx-background-color: #f39c12; -fx-text-fill: white;" text="Update" />
+                                                <Button mnemonicParsing="false" onAction="#deleteCustomer" prefWidth="100.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Delete" />
+                                                <Button mnemonicParsing="false" onAction="#clearCustomerFields" prefWidth="100.0" style="-fx-background-color: #95a5a6; -fx-text-fill: white;" text="Clear" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+
+                                <!-- Customer Table -->
+                                <VBox VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Customer List" textFill="#2c3e50">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TableView fx:id="tblCustomers" prefHeight="300.0" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="colCustomerId" prefWidth="80.0" text="ID" />
+                                                <TableColumn fx:id="colCustomerTitle" prefWidth="60.0" text="Title" />
+                                                <TableColumn fx:id="colCustomerName" prefWidth="120.0" text="Name" />
+                                                <TableColumn fx:id="colCustomerDOB" prefWidth="100.0" text="Date of Birth" />
+                                                <TableColumn fx:id="colCustomerSalary" prefWidth="100.0" text="Salary" />
+                                                <TableColumn fx:id="colCustomerAddress" prefWidth="150.0" text="Address" />
+                                                <TableColumn fx:id="colCustomerCity" prefWidth="100.0" text="City" />
+                                                <TableColumn fx:id="colCustomerProvince" prefWidth="100.0" text="Province" />
+                                                <TableColumn fx:id="colCustomerPostal" prefWidth="100.0" text="Postal Code" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+
+                <!-- Item Management Tab -->
+                <Tab text="Item Management">
+                    <content>
+                        <VBox spacing="10.0">
+                            <children>
+                                <!-- Item Form -->
+                                <VBox spacing="10.0" style="-fx-background-color: #ecf0f1; -fx-padding: 15;">
+                                    <children>
+                                        <Label text="Item Information" textFill="#2c3e50">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Label>
+
+                                        <!-- Row 1 -->
+                                        <HBox spacing="15.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Item Code:" />
+                                                        <TextField fx:id="txtItemCode" promptText="Enter Item Code" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Description:" />
+                                                        <TextField fx:id="txtItemDescription" promptText="Enter Description" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <!-- Row 2 -->
+                                        <HBox spacing="15.0">
+                                            <children>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Pack Size:" />
+                                                        <TextField fx:id="txtItemPackSize" promptText="Enter Pack Size" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Unit Price:" />
+                                                        <TextField fx:id="txtItemUnitPrice" promptText="Enter Unit Price" />
+                                                    </children>
+                                                </VBox>
+                                                <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                                    <children>
+                                                        <Label text="Qty on Hand:" />
+                                                        <TextField fx:id="txtItemQtyOnHand" promptText="Enter Quantity" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+
+                                        <!-- Buttons -->
+                                        <HBox alignment="CENTER" spacing="10.0">
+                                            <children>
+                                                <Button mnemonicParsing="false" onAction="#addItem" prefWidth="100.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="Add" />
+                                                <Button mnemonicParsing="false" onAction="#updateItem" prefWidth="100.0" style="-fx-background-color: #f39c12; -fx-text-fill: white;" text="Update" />
+                                                <Button mnemonicParsing="false" onAction="#deleteItem" prefWidth="100.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Delete" />
+                                                <Button mnemonicParsing="false" onAction="#clearItemFields" prefWidth="100.0" style="-fx-background-color: #95a5a6; -fx-text-fill: white;" text="Clear" />
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+
+                                <!-- Item Table -->
+                                <VBox VBox.vgrow="ALWAYS">
+                                    <children>
+                                        <Label text="Item List" textFill="#2c3e50">
+                                            <font>
+                                                <Font name="System Bold" size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TableView fx:id="tblItems" prefHeight="350.0" VBox.vgrow="ALWAYS">
+                                            <columns>
+                                                <TableColumn fx:id="colItemCode" prefWidth="120.0" text="Code" />
+                                                <TableColumn fx:id="colItemDescription" prefWidth="250.0" text="Description" />
+                                                <TableColumn fx:id="colItemPackSize" prefWidth="150.0" text="Pack Size" />
+                                                <TableColumn fx:id="colItemUnitPrice" prefWidth="120.0" text="Unit Price" />
+                                                <TableColumn fx:id="colItemQtyOnHand" prefWidth="120.0" text="Qty on Hand" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                            </padding>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>
